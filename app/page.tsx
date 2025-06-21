@@ -1,51 +1,59 @@
-import { DeployButton } from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
-import Link from "next/link";
+'use client'
+
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
-  return (
-    <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
-            <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/"}>Next.js Supabase Starter</Link>
-              <div className="flex items-center gap-2">
-                <DeployButton />
-              </div>
-            </div>
-            {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
-          </div>
-        </nav>
-        <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
-          <Hero />
-          <main className="flex-1 flex flex-col gap-6 px-4">
-            <h2 className="font-medium text-xl mb-4">Next steps</h2>
-            {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-          </main>
-        </div>
+  const router = useRouter()
 
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
-          </p>
-          <ThemeSwitcher />
-        </footer>
-      </div>
+  return (
+    <main className="flex flex-col items-center justify-center h-screen text-center px-4 animate-gradient">
+      <motion.h1
+        className="text-5xl md:text-7xl font-extrabold drop-shadow-lg"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Welcome to <span className="text-yellow-300">UAS CSP</span>
+      </motion.h1>
+
+      <motion.p
+        className="mt-6 max-w-xl text-lg md:text-xl text-white/90"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+          This web is created by Frederick Christian Osoen C14220269 powered by Next.js, Tailwind, and Supabase.
+      </motion.p>
+
+      <motion.div
+        className="mt-10 flex gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <button
+          onClick={() => router.push('/login')}
+          className="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300"
+        >
+          Login
+        </button>
+        <button
+          onClick={() => router.push('/signup')}
+          className="bg-white hover:bg-gray-100 text-purple-700 font-semibold px-6 py-3 rounded-full transition-all duration-300"
+        >
+          Sign Up
+        </button>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-10 text-white/80 text-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+      >
+        &copy; 2025 FCO-C14220269. don't copy my web!
+      </motion.div>
     </main>
-  );
+  )
 }

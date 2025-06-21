@@ -1,41 +1,25 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import { icons } from 'lucide-react'
+import './globals.css'
+import { Inter } from 'next/font/google'
+import { Toaster} from 'react-hot-toast'
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
-};
+export const metadata = {
+  title: 'C14220269',
+  description: 'A vibrant animated landing page with Supabase backend',
+  icons: {
+    icon: '@/app/favicon2.ico',
+  },
+}
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${inter.className} bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 min-h-screen text-white`}>
+        {children}
+        <Toaster position='top-center'/>
       </body>
     </html>
-  );
+  )
 }

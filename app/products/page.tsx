@@ -1,0 +1,8 @@
+import { createClient } from '@/lib/supabase/server'
+
+export default async function Page() {
+  const supabase = await createClient()
+  const { data: products } = await supabase.from('products').select()
+
+  return <pre>{JSON.stringify(products, null, 2)}</pre>
+}
