@@ -52,7 +52,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        &copy; 2025 FCO-C14220269. don't copy my web!
+        &copy; 2025 FCO-C14220269. don&rsquo;t copy my web!
       </motion.div>
     </main>
   )

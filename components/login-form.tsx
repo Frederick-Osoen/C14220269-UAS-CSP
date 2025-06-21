@@ -40,10 +40,7 @@ export function LoginForm({
       if (error) throw error;
 
       // ✅ Simpan user di localStorage untuk pengecekan role client-side
-      const {
-        user,
-        session,
-      } = data;
+      const { user } = data;
 
       const { data: userData } = await supabase
         .from("users")

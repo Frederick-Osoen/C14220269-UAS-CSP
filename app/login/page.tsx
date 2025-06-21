@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import supabase from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { setUserSession, clearUserSession } from '@/lib/utils';
+import { setUserSession } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 export default function Login() {
@@ -96,7 +96,7 @@ export default function Login() {
         </form>
 
         <p className="text-sm mt-6 text-center text-gray-600">
-          Haven't had an account?{' '}
+          Haven&rsquo;t had an account?{' '}
           <button
             onClick={() => router.push('/signup')}
             className="text-pink-600 hover:underline"
